@@ -122,7 +122,7 @@ if __name__ == "__main__":
             city_pair = CityPair(
                 source_data[origin].code,
                 source_data[destination].code,
-                distance,
+                distance - 1,
                 list(map(lambda x: x + 1, dijkstra_result["shortest_path"]))
             )
 
