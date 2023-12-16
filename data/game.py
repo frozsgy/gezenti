@@ -46,10 +46,7 @@ class Game:
     def does_path_exist(self, origin: int, destination: int, path: list) -> bool:
         inbetween_nodes = set(path) - {origin, destination}
         if len(inbetween_nodes) == 0:
-            if destination in self.cities[origin - 1]["neighbours"]:
-                return True
-            else:
-                return False
+            return destination in self.cities[origin - 1]["neighbours"]
         else:
             for node in inbetween_nodes:
                 if node in self.cities[origin - 1]["neighbours"]:
