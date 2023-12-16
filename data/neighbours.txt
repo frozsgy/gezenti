@@ -19,7 +19,7 @@ Bursa,Balıkesir,Kütahya,Bilecik,Sakarya,Kocaeli,Yalova
 Çorum,Yozgat,Amasya,Samsun,Sinop,Kastamonu,Çankırı,Kırıkkale
 Denizli,Muğla,Burdur,Afyon,Uşak,Manisa,Aydın
 Diyarbakır,Şanlıurfa,Mardin,Batman,Muş,Bingöl,Elazığ,Malatya,Adıyaman
-Edirne,Çanakkale,Tekirdağ,Kırıkkale
+Edirne,Çanakkale,Tekirdağ,Kırklareli
 Elazığ,Diyarbakır,Bingöl,Tunceli,Erzincan,Malatya
 Erzincan,Elazığ,Tunceli,Bingöl,Erzurum,Bayburt,Gümüşhane,Giresun,Sivas,Malatya
 Erzurum,Bingöl,Muş,Ağrı,Kars,Ardahan,Artvin,Rize,Trabzon,Bayburt,Erzincan
