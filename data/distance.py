@@ -120,10 +120,10 @@ if __name__ == "__main__":
                     f"for {source_data[origin]}->{source_data[destination]}"
                 )
             city_pair = CityPair(
-                source_data[origin],
-                source_data[destination],
+                source_data[origin].code,
+                source_data[destination].code,
                 distance,
-                dijkstra_result["shortest_path"]
+                list(map(lambda x: x + 1, dijkstra_result["shortest_path"]))
             )
 
             city_pairs.append(city_pair)
