@@ -1,10 +1,10 @@
-Adana,Hatay,Osmaniye,Kahramanmaraş,Kayseri,Niğde,İçel
+Adana,Hatay,Osmaniye,Kahramanmaraş,Kayseri,Niğde,Mersin
 Adıyaman,Şanlıurfa,Diyarbakır,Malatya,Kahramanmaraş,Gaziantep
 Afyon,Isparta,Konya,Eskişehir,Kütahya,Uşak,Denizli,Burdur
 Ağrı,Van,Iğdır,Kars,Erzurum,Muş,Bitlis
 Amasya,Yozgat,Tokat,Samsun,Çorum
 Ankara,Konya,Aksaray,Kırşehir,Kırıkkale,Çankırı,Bolu,Eskişehir,Afyon
-Antalya,İçel,Karaman,Konya,Isparta,Burdur,Muğla
+Antalya,Mersin,Karaman,Konya,Isparta,Burdur,Muğla
 Artvin,Rize,Erzurum,Ardahan
 Aydın,Muğla,Denizli,Manisa,İzmir
 Balıkesir,İzmir,Manisa,Kütahya,Bursa,Çanakkale
@@ -30,7 +30,7 @@ Gümüşhane,Erzincan,Bayburt,Trabzon,Giresun
 Hakkari,Van,Şırnak
 Hatay,Kilis,Gaziantep,Osmaniye,Adana
 Isparta,Antalya,Konya,Afyon,Burdur
-İçel,Adana,Niğde,Konya,Karaman,Antalya
+Mersin,Adana,Niğde,Konya,Karaman,Antalya
 İstanbul,Kocaeli,Tekirdağ,Kırklareli
 İzmir,Aydın,Manisa,Balıkesir
 Kars,Ağrı,Iğdır,Ardahan,Erzurum
@@ -39,7 +39,7 @@ Kayseri,Adana,Kahramanmaraş,Sivas,Yozgat,Nevşehir,Niğde
 Kırklareli,Edirne,Tekirdağ,İstanbul
 Kırşehir,Nevşehir,Yozgat,Kırıkkale,Ankara,Aksaray
 Kocaeli,Yalova,İstanbul,Bursa,Bilecik,Sakarya
-Konya,Antalya,Karaman,İçel,Niğde,Aksaray,Ankara,Eskişehir,Afyon,Isparta
+Konya,Antalya,Karaman,Mersin,Niğde,Aksaray,Ankara,Eskişehir,Afyon,Isparta
 Kütahya,Manisa,Uşak,Afyon,Eskişehir,Bilecik,Bursa,Balıkesir
 Malatya,Kahramanmaraş,Adıyaman,Diyarbakır,Elazığ,Erzincan,Sivas
 Manisa,İzmir,Aydın,Denizli,Uşak,Kütahya,Balıkesir
@@ -48,7 +48,7 @@ Mardin,Şanlıurfa,Diyarbakır,Batman,Siirt,Şırnak
 Muğla,Antalya,Burdur,Denizli,Aydın
 Muş,Diyarbakır,Batman,Bitlis,Ağrı,Erzurum,Bingöl
 Nevşehir,Niğde,Kayseri,Yozgat,Kırşehir,Aksaray
-Niğde,Nevşehir,Kayseri,Adana,İçel,Konya,Aksaray
+Niğde,Nevşehir,Kayseri,Adana,Mersin,Konya,Aksaray
 Ordu,Samsun,Tokat,Sivas,Giresun
 Rize,Artvin,Erzurum,Bayburt,Trabzon
 Sakarya,Düzce,Bolu,Bilecik,Bursa,Kocaeli
@@ -67,7 +67,7 @@ Yozgat,Kayseri,Sivas,Tokat,Amasya,Çorum,Kırıkkale,Kırşehir,Nevşehir
 Zonguldak,Bartın,Çankırı,Bolu,Düzce,Karabük
 Aksaray,Niğde,Nevşehir,Kırşehir,Ankara,Konya
 Bayburt,Erzincan,Erzurum,Rize,Trabzon,Gümüşhane
-Karaman,İçel,Konya,Antalya
+Karaman,Mersin,Konya,Antalya
 Kırıkkale,Kırşehir,Yozgat,Çorum,Çankırı,Ankara
 Batman,Mardin,Siirt,Bitlis,Muş,Diyarbakır
 Şırnak,Mardin,Siirt,Van,Hakkari

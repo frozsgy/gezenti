@@ -30,7 +30,7 @@ Gümüşhane,29
 Hakkari,30
 Hatay,31
 Isparta,32
-İçel,33
+Mersin,33
 İstanbul,34
 İzmir,35
 Kars,36

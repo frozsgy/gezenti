@@ -10,4 +10,4 @@ def read_from_json():
 
 
 if __name__ == '__main__':
-    print(read_from_json())
+    print(str(json.dumps(read_from_json(), default=vars, ensure_ascii=False)))
