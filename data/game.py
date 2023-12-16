@@ -13,7 +13,7 @@ class Game:
     def load_permutations(self):
         with open('permutations_shuffled.json', 'r') as f:
             permutations = json.load(f)
-            shuffle(permutations)
+            # shuffle(permutations)
             self.games = permutations
 
     def __init__(self):
