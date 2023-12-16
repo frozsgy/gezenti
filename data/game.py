@@ -1,0 +1,91 @@
+import json
+from random import shuffle
+
+
+class Game:
+    cities = []
+    games = []
+
+    def load_cities(self):
+        with open('cities.json', 'r') as f:
+            self.cities = json.load(f)
+
+    def load_permutations(self):
+        with open('permutations_shuffled.json', 'r') as f:
+            permutations = json.load(f)
+            shuffle(permutations)
+            self.games = permutations
+
+    def __init__(self):
+        self.load_cities()
+        self.load_permutations()
+
+    def get_city_name_by_id(self, id: int):
+        return self.cities[id]["name"]
+
+    def get_city_id_by_name(self, name: str):
+        # TODO -- fails for capital i, such as izmir
+        candidate = list(filter(lambda x: x["name"] == name.lower().capitalize(), self.cities))
+        if not candidate:
+            raise Exception("Girilen isimde bir şehir mevcut değil")
+        return candidate[0]["code"]
+
+    def get_city_neigbours_by_id(self, id: int):
+        return self.cities[id]["neighbours"]
+
+    def get_game(self, game_number: int = 0):
+        return self.games[game_number]
+
+    def get_shortest_path_as_string(self, game_number: int = 0):
+        return " -> ".join(
+            map(self.get_city_name_by_id, map(lambda x: x - 1, self.games[game_number]["shortest_path"])))
+
+    def play(self):
+        game_number = int(input(f'Oyun numarası giriniz: '))
+
+        game_round = game.get_game(game_number)
+
+        print(f'Başlangıç şehri: {game.get_city_name_by_id(game_round["origin"] - 1)}')
+        print(f'Varılacak şehir: {game.get_city_name_by_id(game_round["destination"] - 1)}')
+        print(f'En kısa mesafe : {game_round["distance"]}')
+
+        i = 0
+        guesses = [game_round["origin"], game_round["destination"]]
+        ideal_path = game_round["shortest_path"]
+
+        did_win = False
+
+        while i < game_round["distance"] + 3:
+            next_city = input("Sıradaki şehir: ")
+
+            try:
+                next_city_id = game.get_city_id_by_name(next_city)
+            except Exception:
+                print(f'{next_city} isminde bir şehir mevcut değil')
+                continue
+
+            if next_city_id not in guesses:
+                guesses.append(next_city_id)
+            else:
+                print(f'{next_city} şehrini daha önce tahmin ettiniz, başka bir şehir deneyin')
+                continue
+
+            if set(ideal_path).issubset(set(guesses)):
+                # TODO -- add alternative optimized routes handling
+                did_win = True
+                break
+            # TODO -- add supoptimal routes acceptance criteria
+            i += 1
+        if did_win:
+            print(f'Rota tamamlandı!')
+            print(f'Tahmin sayınız: {i + 1}')
+        else:
+            print(f'Tahmin haklarınız bitti :(')
+            print(f'En kısa yol: {game.get_shortest_path_as_string(game_number)}')
+
+
+if __name__ == "__main__":
+    game = Game()
+
+    while True:
+        game.play()
