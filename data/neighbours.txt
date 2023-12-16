@@ -3,7 +3,7 @@ Adıyaman,Şanlıurfa,Diyarbakır,Malatya,Kahramanmaraş,Gaziantep
 Afyon,Isparta,Konya,Eskişehir,Kütahya,Uşak,Denizli,Burdur
 Ağrı,Van,Iğdır,Kars,Erzurum,Muş,Bitlis
 Amasya,Yozgat,Tokat,Samsun,Çorum
-Ankara,Konya,Aksaray,Kırşehir,Kırıkkale,Çankırı,Bolu,Eskişehir,Afyon
+Ankara,Konya,Aksaray,Kırşehir,Kırıkkale,Çankırı,Bolu,Eskişehir
 Antalya,Mersin,Karaman,Konya,Isparta,Burdur,Muğla
 Artvin,Rize,Erzurum,Ardahan
 Aydın,Muğla,Denizli,Manisa,İzmir
