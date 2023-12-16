@@ -41,6 +41,6 @@ if __name__ == "__main__":
         destination = pair[1] - 1
         distance = distance_matrix[origin][destination]
         if distance > 1:
-            city_pairs.append(CityPair(source_data[origin].code, source_data[destination].code, distance, []))
+            city_pairs.append(CityPair(source_data[origin], source_data[destination], distance, []))
 
     print(str(json.dumps(city_pairs, default=vars, ensure_ascii=False)))
