@@ -49,7 +49,7 @@ Muğla,Antalya,Burdur,Denizli,Aydın
 Muş,Diyarbakır,Batman,Bitlis,Ağrı,Erzurum,Bingöl
 Nevşehir,Niğde,Kayseri,Yozgat,Kırşehir,Aksaray
 Niğde,Nevşehir,Kayseri,Adana,İçel,Konya,Aksaray
-Manisa,İzmir,Aydın,Uşak,Denizli,Kütahya,Balıkesir
+Ordu,Samsun,Tokat,Sivas,Giresun
 Rize,Artvin,Erzurum,Bayburt,Trabzon
 Sakarya,Düzce,Bolu,Bilecik,Bursa,Kocaeli
 Samsun,Ordu,Tokat,Amasya,Çorum,Sinop
