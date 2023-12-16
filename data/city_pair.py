@@ -14,4 +14,4 @@ class CityPair:
         self.shortest_path = shortest_path
 
     def __str__(self):
-        return f"{self.origin}->{self.destination}, distance: {self.distance}"
+        return f"{self.origin}->{self.destination}, distance: {self.distance}, shortest path: {self.shortest_path}"

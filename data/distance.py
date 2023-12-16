@@ -3,6 +3,7 @@ import json
 
 from calculate import get_cities_and_neighbours_list
 from copy import deepcopy
+from sys import maxsize
 
 from city_pair import CityPair
 
@@ -16,20 +17,18 @@ def floyd_warshall(dist, vertex_count):
     return dist
 
 
-import sys
-
 NO_PARENT = -1
 
 
 def dijkstra(adjacency_matrix, start_vertex):
     n_vertices = len(adjacency_matrix[0])
 
-    shortest_distances = [sys.maxsize] * n_vertices
+    shortest_distances = [maxsize] * n_vertices
 
     added = [False] * n_vertices
 
     for vertex_index in range(n_vertices):
-        shortest_distances[vertex_index] = sys.maxsize
+        shortest_distances[vertex_index] = maxsize
         added[vertex_index] = False
 
     shortest_distances[start_vertex] = 0
@@ -40,7 +39,7 @@ def dijkstra(adjacency_matrix, start_vertex):
 
     for i in range(1, n_vertices):
         nearest_vertex = -1
-        shortest_distance = sys.maxsize
+        shortest_distance = maxsize
         for vertex_index in range(n_vertices):
             if not added[vertex_index] and shortest_distances[vertex_index] < shortest_distance:
                 nearest_vertex = vertex_index
@@ -55,20 +54,31 @@ def dijkstra(adjacency_matrix, start_vertex):
                 parents[vertex_index] = nearest_vertex
                 shortest_distances[vertex_index] = shortest_distance + edge_distance
 
-    print_solution(start_vertex, shortest_distances, parents)
+    return get_solutions(start_vertex, shortest_distances, parents)
 
 
-def print_solution(start_vertex, distances, parents):
+def get_solutions(start_vertex, distances, parents):
     n_vertices = len(distances)
-    print("Vertex\t Distance\tPath")
+
+    shortest_paths = []
 
     for vertex_index in range(n_vertices):
         if vertex_index != start_vertex:
-            print("\n", start_vertex, "->", vertex_index, "\t\t", distances[vertex_index], "\t\t", end="")
-            print(get_path(vertex_index, parents, []))
+            shortest_paths.append(
+                {
+                    "origin": start_vertex,
+                    "destination": vertex_index,
+                    "distance": distances[vertex_index],
+                    "shortest_path": get_path(vertex_index, parents)
+                }
+            )
+
+    return shortest_paths
 
 
-def get_path(current_vertex, parents, path):
+def get_path(current_vertex, parents, path=None):
+    if path is None:
+        path = []
     if current_vertex == NO_PARENT:
         return path
     return get_path(parents[current_vertex], parents, [current_vertex] + path)
@@ -90,19 +100,32 @@ if __name__ == "__main__":
 
     city_permutations = itertools.permutations(range(1, 82), 2)
 
-    # print(distance_matrix)
-
     city_pairs = []
+    dijkstra_results = []
+    for i in range(81):
+        dijkstra_results += dijkstra(deepcopy(graph), i)
 
     for pair in city_permutations:
         origin = pair[0] - 1
         destination = pair[1] - 1
         distance = distance_matrix[origin][destination]
         if distance > 1:
-            city_pairs.append(CityPair(source_data[origin], source_data[destination], distance, []))
+            dijkstra_result = list(
+                filter(lambda x: x["origin"] == origin and x["destination"] == destination, dijkstra_results)
+            )[0]
 
-    for i in range(81):
-        dijkstra(deepcopy(graph), i)
-    exit()
+            if distance != dijkstra_result["distance"]:
+                print(
+                    f"dijkstra and floyd warshall did not provide the same result "
+                    f"for {source_data[origin]}->{source_data[destination]}"
+                )
+            city_pair = CityPair(
+                source_data[origin],
+                source_data[destination],
+                distance,
+                dijkstra_result["shortest_path"]
+            )
+
+            city_pairs.append(city_pair)
 
     print(str(json.dumps(city_pairs, default=vars, ensure_ascii=False)))
