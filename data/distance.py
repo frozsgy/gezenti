@@ -16,6 +16,64 @@ def floyd_warshall(dist, vertex_count):
     return dist
 
 
+import sys
+
+NO_PARENT = -1
+
+
+def dijkstra(adjacency_matrix, start_vertex):
+    n_vertices = len(adjacency_matrix[0])
+
+    shortest_distances = [sys.maxsize] * n_vertices
+
+    added = [False] * n_vertices
+
+    for vertex_index in range(n_vertices):
+        shortest_distances[vertex_index] = sys.maxsize
+        added[vertex_index] = False
+
+    shortest_distances[start_vertex] = 0
+
+    parents = [-1] * n_vertices
+
+    parents[start_vertex] = NO_PARENT
+
+    for i in range(1, n_vertices):
+        nearest_vertex = -1
+        shortest_distance = sys.maxsize
+        for vertex_index in range(n_vertices):
+            if not added[vertex_index] and shortest_distances[vertex_index] < shortest_distance:
+                nearest_vertex = vertex_index
+                shortest_distance = shortest_distances[vertex_index]
+
+        added[nearest_vertex] = True
+
+        for vertex_index in range(n_vertices):
+            edge_distance = adjacency_matrix[nearest_vertex][vertex_index]
+
+            if edge_distance > 0 and shortest_distance + edge_distance < shortest_distances[vertex_index]:
+                parents[vertex_index] = nearest_vertex
+                shortest_distances[vertex_index] = shortest_distance + edge_distance
+
+    print_solution(start_vertex, shortest_distances, parents)
+
+
+def print_solution(start_vertex, distances, parents):
+    n_vertices = len(distances)
+    print("Vertex\t Distance\tPath")
+
+    for vertex_index in range(n_vertices):
+        if vertex_index != start_vertex:
+            print("\n", start_vertex, "->", vertex_index, "\t\t", distances[vertex_index], "\t\t", end="")
+            print(get_path(vertex_index, parents, []))
+
+
+def get_path(current_vertex, parents, path):
+    if current_vertex == NO_PARENT:
+        return path
+    return get_path(parents[current_vertex], parents, [current_vertex] + path)
+
+
 if __name__ == "__main__":
     source_data = get_cities_and_neighbours_list()
 
@@ -42,5 +100,9 @@ if __name__ == "__main__":
         distance = distance_matrix[origin][destination]
         if distance > 1:
             city_pairs.append(CityPair(source_data[origin], source_data[destination], distance, []))
+
+    for i in range(81):
+        dijkstra(deepcopy(graph), i)
+    exit()
 
     print(str(json.dumps(city_pairs, default=vars, ensure_ascii=False)))
