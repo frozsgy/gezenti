@@ -34,11 +34,27 @@ class Game:
         return self.cities[id]["neighbours"]
 
     def get_game(self, game_number: int = 0):
+        if game_number >= len(self.games):
+            print(f"Seçebileceğiniz maksimum oyun numarası {len(self.games) - 1}, rastgele oyun yükleniyor...")
+            return self.games[game_number % (len(self.games) - 1)]
         return self.games[game_number]
 
     def get_shortest_path_as_string(self, game_number: int = 0):
         return " -> ".join(
             map(self.get_city_name_by_id, map(lambda x: x - 1, self.games[game_number]["shortest_path"])))
+
+    def does_path_exist(self, origin: int, destination: int, path: list) -> bool:
+        inbetween_nodes = set(path) - {origin, destination}
+        if len(inbetween_nodes) == 0:
+            if destination in self.cities[origin - 1]["neighbours"]:
+                return True
+            else:
+                return False
+        else:
+            for node in inbetween_nodes:
+                if node in self.cities[origin - 1]["neighbours"]:
+                    return self.does_path_exist(node, destination, list(set(inbetween_nodes) - {node}))
+            return False
 
     def play(self):
         game_number = int(input(f'Oyun numarası giriniz: '))
@@ -51,7 +67,6 @@ class Game:
 
         i = 0
         guesses = [game_round["origin"], game_round["destination"]]
-        ideal_path = game_round["shortest_path"]
 
         did_win = False
 
@@ -73,15 +88,16 @@ class Game:
                 print(f'{next_city} şehrini daha önce tahmin ettiniz, başka bir şehir deneyin')
                 continue
 
-            if set(ideal_path).issubset(set(guesses)):
-                # TODO -- add alternative optimized routes handling
+            if game.does_path_exist(game_round["origin"], game_round["destination"], guesses):
                 did_win = True
                 break
-            # TODO -- add supoptimal routes acceptance criteria
             i += 1
+
         if did_win:
             print(f'Rota tamamlandı!')
             print(f'Tahmin sayınız: {i + 1}')
+            if i + 1 != game_round["distance"]:
+                print(f'En kısa yol: {game.get_shortest_path_as_string(game_number)}')
         else:
             print(f'Tahmin haklarınız bitti :(')
             print(f'En kısa yol: {game.get_shortest_path_as_string(game_number)}')
