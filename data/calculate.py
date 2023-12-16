@@ -2,10 +2,10 @@ from city import City
 import json
 
 
-def main():
+def get_cities_and_neighbours_list():
     cities = load_cities()
     load_neighbours(cities)
-    return json.dumps(cities, default=vars, ensure_ascii=False)
+    return cities
 
 
 def load_cities() -> list:
@@ -35,4 +35,4 @@ def find_city_by_name(cities: list, name: str) -> City:
 
 
 if __name__ == '__main__':
-    print(str(main()))
+    print(str(json.dumps(get_cities_and_neighbours_list(), default=vars, ensure_ascii=False)))
