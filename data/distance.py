@@ -1,5 +1,10 @@
+import itertools
+import json
+
 from calculate import get_cities_and_neighbours_list
 from copy import deepcopy
+
+from city_pair import CityPair
 
 
 def floyd_warshall(dist, vertex_count):
@@ -25,4 +30,17 @@ if __name__ == "__main__":
 
     distance_matrix = floyd_warshall(deepcopy(graph), vertices)
 
-    print(distance_matrix)
+    city_permutations = itertools.permutations(range(1, 82), 2)
+
+    # print(distance_matrix)
+
+    city_pairs = []
+
+    for pair in city_permutations:
+        origin = pair[0] - 1
+        destination = pair[1] - 1
+        distance = distance_matrix[origin][destination]
+        if distance > 1:
+            city_pairs.append(CityPair(source_data[origin].code, source_data[destination].code, distance, []))
+
+    print(str(json.dumps(city_pairs, default=vars, ensure_ascii=False)))
