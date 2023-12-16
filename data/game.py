@@ -59,10 +59,13 @@ class Game:
             next_city = input("Sıradaki şehir: ")
 
             try:
-                next_city_id = game.get_city_id_by_name(next_city)
-            except Exception:
-                print(f'{next_city} isminde bir şehir mevcut değil')
-                continue
+                next_city_id = int(next_city)
+            except ValueError:
+                try:
+                    next_city_id = game.get_city_id_by_name(next_city)
+                except Exception:
+                    print(f'{next_city} isminde bir şehir mevcut değil')
+                    continue
 
             if next_city_id not in guesses:
                 guesses.append(next_city_id)
