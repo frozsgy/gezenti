@@ -1,13 +1,13 @@
 .autoComplete_wrapper {
     display: inline-block;
     position: absolute;
-    /*padding-left: 200px;*/
     /*text-align: center;*/
-    font-family: 'Open Sans';
+    /*padding-left: -3200px;*/
+    /*text-align: center;*/
 }
 
 .autoComplete_wrapper > input {
-    width: 370px;
+    width: 24.8em;
     height: 40px;
     padding-left: 20px;
     font-size: 1rem;
@@ -75,7 +75,7 @@
 
 .autoComplete_wrapper > ul > li mark {
     background-color: transparent;
-    color: rgba(255, 122, 122, 1);
+    color: #2c8898;
     font-weight: bold;
 }
 

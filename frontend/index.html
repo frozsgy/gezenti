@@ -4,16 +4,28 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>SVG Türkiye Haritası</title>
+    <title>Gezenti</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic"
           rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet"/>
     <link href="css/svg-turkiye-haritasi.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="css/autoComplete.css">
     <script src="js/game.js"></script>
-
+    <script src="js/svg-turkiye-haritasi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
 </head>
 <body onLoad="initGame()">
+
+<div class="header">
+  <div class="left">
+    <a href="./" class="external button menu-button" target="_self">Gezenti</a>
+  </div>
+  <div class="right">
+    <a href="./hakkinda" class="external button menu-button" target="_blank">Hakkında</a>
+  </div>
+</div>
+<hr/>
 
 <div class="il-isimleri"></div>
 <div class="svg-turkiye-haritasi">
@@ -271,18 +283,32 @@
         </g>
       </svg>
 </div>
-<!-- SVG Türkiye Haritası -->
-<script src="js/svg-turkiye-haritasi.js"></script>
+
 <script>
     svgturkiyeharitasi();
 </script>
+<div class="content">
 
-<div class="autoComplete_wrapper">
+  <div class="autoComplete_wrapper">
     <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off"
-           autocapitalize="off">
-</div>
+           autocapitalize="off"/>
+  </div>
+  <br /><br />
 
-<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+  <p>Tahminleriniz:
+    <br />
+
+    <select id="typed-options" multiple style="width: 100%" disabled>
+
+    </select>
+
+  </p>
+
+
+
+
+
+
 
 <script>
     const autoCompleteJS = new autoComplete({
@@ -404,15 +430,13 @@
 <br/>
 <br/>
 <br/>
-<select id="typed-options" multiple>
 
-</select>
 
 
 <br/>
 <br/>
 <br/>
 
-
+</div>
 </body>
 </html>
