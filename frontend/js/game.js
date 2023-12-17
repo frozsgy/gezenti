@@ -1,4 +1,4 @@
-const apiUrl = "http://127.0.0.1:5000"
+const apiUrl = "."
 
 const loadGame = async () => {
     const response = await fetch(apiUrl + '/game');
