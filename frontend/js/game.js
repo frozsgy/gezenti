@@ -102,6 +102,8 @@ const finishGame = (didWin, isOptimal) => {
                 }
             }
         }
+
+    // TODO -- do not let user continue playing after this point
     )
 
     guesses.forEach((e) => {
