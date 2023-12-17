@@ -224,3 +224,10 @@ label, legend, fieldset {
     margin-bottom: .5rem;
     font-weight: 600;
 }
+
+#guess-selectbox-info-bar {
+    font-weight: 700;
+    margin-top: 1rem;
+    padding-left: 4px;
+    margin-bottom: 2rem;
+}

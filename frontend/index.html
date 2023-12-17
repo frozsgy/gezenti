@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>Gezenti</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic"
-          rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet"/>
     <link href="css/svg-turkiye-haritasi.css" rel="stylesheet"/>
 
@@ -17,18 +15,18 @@
 </head>
 <body onLoad="initGame()">
 
-<div class="header">
-    <div class="left">
-        <a href="./" class="external button menu-button" target="_self">Gezenti</a>
-    </div>
-    <div class="right">
-        <a href="./hakkinda" class="external button menu-button" target="_blank">Hakkında</a>
-    </div>
-</div>
-<hr/>
+<!--<div class="header">-->
+<!--    <div class="left">-->
+<!--        <a href="./" class="external button menu-button" target="_self">Gezenti</a>-->
+<!--    </div>-->
+<!--    <div class="right">-->
+<!--        <a href="./hakkinda" class="external button menu-button" target="_blank">Hakkında</a>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<hr/>-->
 <div class="daily-game-info-bar">
     <div class="left"><h3 id="daily-game-title">Gezenti #0</h3></div>
-    <div class="right"><h3 id="daily-game-route">Rota: İstanbul -> Ankara</h3></div>
+    <div class="right"><h3 id="daily-game-route">Rota: İstanbul → Ankara</h3></div>
 </div>
 <div class="il-isimleri"></div>
 <div class="svg-turkiye-haritasi">
@@ -299,7 +297,7 @@
     </div>
     <br/><br/>
 
-    <p>Tahminleriniz:
+    <p><span id="guess-selectbox-info-bar">Açılan Şehirler (0/99)</span>
         <br/>
 
         <select id="typed-options" multiple style="width: 100%" disabled>
@@ -423,18 +421,12 @@
         );
 
     </script>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
 
 
-    <br/>
-    <br/>
-    <br/>
-
+</div>
+<hr />
+<div class="footer">
+  kopirayt | hakkinda etc
 </div>
 </body>
 </html>

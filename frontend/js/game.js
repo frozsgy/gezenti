@@ -45,7 +45,8 @@ const initGame = () => {
                     new Option(c[e.destination - 1].name)
                 );
                 document.getElementById("daily-game-title").innerText = "Gezenti #" + (parseInt(e.game_id) + 1);
-                document.getElementById("daily-game-route").innerText = "Rota: " + c[e.origin - 1].name + " -> " + c[e.destination - 1].name;
+                document.getElementById("daily-game-route").innerText = "Rota: " + c[e.origin - 1].name + " → " + c[e.destination - 1].name;
+                document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (2/" + (parseInt(e.distance) + 3) + ")";
             })
         }
     );
@@ -61,13 +62,14 @@ const guess = (e) => {
                 }
                 guesses.push(e);
                 guessCount++;
+                document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (" + (guessCount + 2) + "/" + (parseInt(gameDetail.distance) + 3) + ")";
                 showCity(e);
                 const result = await doesPathExist(gameDetail.origin, gameDetail.destination, guesses);
                 if (result) {
-                    finishGame(true);
+                    finishGame(true, guessCount === gameDetail.distance);
                 } else {
                     if (guessCount === gameDetail.distance + 3) {
-                        finishGame(false);
+                        finishGame(false, false);
                     }
                 }
                 return result;
@@ -76,7 +78,7 @@ const guess = (e) => {
     )
 }
 
-const finishGame = (didWin) => {
+const finishGame = (didWin, isOptimal) => {
     if (didWin) {
         setTimeout(() => {
             alert('kazandin');
@@ -86,6 +88,12 @@ const finishGame = (didWin) => {
             alert('kaybettin');
         }, 250);
     }
+    if (!isOptimal) {
+        setTimeout(async () => {
+            alert('optimal rota: ' + await getOptimalPathAsString());
+        }, 250);
+    }
+
     gameDetails.then((e) => {
             for (let i = 1; i < 82; i++) {
                 if (i !== e.origin && i !== e.destination) {
@@ -135,3 +143,16 @@ const getCityIdByName = (name) => {
     );
 };
 
+const getCityNameById = (cities, id) => {
+    return cities[id - 1].name;
+};
+
+const getOptimalPathAsString = () => {
+    return gameDetails.then((gameDetail) => {
+        return cities.then(async (c) => {
+            return gameDetail.shortest_path
+                .map(x => getCityNameById(c, x))
+                .join(" → ");
+        });
+    });
+}
