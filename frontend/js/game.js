@@ -37,6 +37,15 @@ const initGame = () => {
             showCity(e.destination);
             guesses.push(e.origin);
             guesses.push(e.destination);
+            cities.then((c) => {
+                document.getElementById("typed-options").add(
+                    new Option(c[e.origin - 1].name)
+                );
+                document.getElementById("typed-options").add(
+                    new Option(c[e.destination - 1].name)
+                );
+            })
+
         }
     );
 }
@@ -46,21 +55,19 @@ const guess = (e) => {
     return gameDetails.then((gameDetail) => {
             return cities.then(async (c) => {
                 if (guesses.includes(e)) {
-                    console.log("tekrarli tahmin, baska sehir sec");
+                    alert("tekrarli tahmin, baska sehir sec");
                     return false;
                 }
                 guesses.push(e);
                 guessCount++;
-                changeVisibilityOfCity(e);
+                showCity(e);
                 const result = await doesPathExist(gameDetail.origin, gameDetail.destination, guesses);
                 if (result) {
-                    console.log("yes");
                     finishGame(true);
                 } else {
                     if (guessCount === gameDetail.distance + 3) {
                         finishGame(false);
                     }
-                    console.log("new guesses " + guesses);
                 }
                 return result;
             });
@@ -70,9 +77,13 @@ const guess = (e) => {
 
 const finishGame = (didWin) => {
     if (didWin) {
-        console.log("kazandin");
+        setTimeout(() => {
+            alert('kazandin');
+        }, 250);
     } else {
-        console.log("kaybettin");
+        setTimeout(() => {
+            alert('kaybettin');
+        }, 250);
     }
     gameDetails.then((e) => {
             for (let i = 1; i < 82; i++) {
@@ -94,17 +105,16 @@ const finishGame = (didWin) => {
 
 
 const doesPathExist = (origin, destination, path) => {
-    return cities.then((c) => {
+    return cities.then(async (c) => {
             const inbetweenNodes = new Set(path.filter(node => node !== origin && node !== destination));
             if (inbetweenNodes.size === 0) {
                 return c[origin - 1]["neighbours"].includes(destination);
             } else {
-                for (const node of inbetweenNodes) {
-                    if (c[origin - 1]["neighbours"].includes(node)) {
-                        return doesPathExist(node, destination, [...new Set([...inbetweenNodes].filter(item => item !== node))]);
-                    }
-                }
-                return false;
+                const candidates = new Set([...inbetweenNodes].filter(node => c[origin - 1]["neighbours"].includes(node)));
+                const responses = await Promise.all(Array.from(candidates).map(node =>
+                    doesPathExist(node, destination, [...new Set([...inbetweenNodes].filter(item => item !== node))])
+                ));
+                return responses.includes(true);
             }
         }
     );
@@ -115,13 +125,12 @@ const getCityIdByName = (name) => {
             const candidate = c.filter(x => x.name.toLowerCase() === name.toLowerCase());
 
             if (candidate.length === 0) {
-                console.log("Girilen isimde bir şehir mevcut değil");
+                alert("Girilen isimde bir şehir mevcut değil");
                 return -1;
             }
 
             return candidate[0].code;
         }
     );
-
 };
 
