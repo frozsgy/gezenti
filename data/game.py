@@ -48,10 +48,10 @@ class Game:
         if len(inbetween_nodes) == 0:
             return destination in self.cities[origin - 1]["neighbours"]
         else:
-            for node in inbetween_nodes:
-                if node in self.cities[origin - 1]["neighbours"]:
-                    return self.does_path_exist(node, destination, list(set(inbetween_nodes) - {node}))
-            return False
+            # TODO -- optimize this by avoiding visiting nodes that are already visited
+            candidates = set(inbetween_nodes).intersection(self.cities[origin - 1]["neighbours"])
+            responses = map(lambda node: self.does_path_exist(node, destination, list(set(inbetween_nodes) - {node})), candidates)
+            return True in responses
 
     def play(self):
         game_number = int(input(f'Oyun numarası giriniz: '))
