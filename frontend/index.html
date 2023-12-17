@@ -18,18 +18,21 @@
 <body onLoad="initGame()">
 
 <div class="header">
-  <div class="left">
-    <a href="./" class="external button menu-button" target="_self">Gezenti</a>
-  </div>
-  <div class="right">
-    <a href="./hakkinda" class="external button menu-button" target="_blank">Hakkında</a>
-  </div>
+    <div class="left">
+        <a href="./" class="external button menu-button" target="_self">Gezenti</a>
+    </div>
+    <div class="right">
+        <a href="./hakkinda" class="external button menu-button" target="_blank">Hakkında</a>
+    </div>
 </div>
 <hr/>
-
+<div class="daily-game-info-bar">
+    <div class="left"><h3 id="daily-game-title">Gezenti #0</h3></div>
+    <div class="right"><h3 id="daily-game-route">Rota: İstanbul -> Ankara</h3></div>
+</div>
 <div class="il-isimleri"></div>
 <div class="svg-turkiye-haritasi">
-    <svg version="1.1" id="svg-turkiye-haritasi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1007.478 527.323"
+    <svg version="1.1" id="svg-turkiye-haritasi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1007.478 450.323"
          xml:space="preserve">
         <g id="turkiye">
           <g id="1" class="path-group" data-plakakodu="01" data-iladi="Adana" style="display:none;">
@@ -289,153 +292,148 @@
 </script>
 <div class="content">
 
-  <div class="autoComplete_wrapper">
-    <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off"
-           autocapitalize="off"/>
-  </div>
-  <br /><br />
 
-  <p>Tahminleriniz:
-    <br />
+    <div class="autoComplete_wrapper">
+        <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off"
+               autocapitalize="off"/>
+    </div>
+    <br/><br/>
 
-    <select id="typed-options" multiple style="width: 100%" disabled>
+    <p>Tahminleriniz:
+        <br/>
 
-    </select>
+        <select id="typed-options" multiple style="width: 100%" disabled>
 
-  </p>
+        </select>
 
-
-
+    </p>
 
 
+    <script>
+        const autoCompleteJS = new autoComplete({
+            placeHolder: "Şehir yazmaya başlayın...",
+            searchEngine: "loose",
+            data: {
+                src: [
+                    "Adana",
+                    "Adıyaman",
+                    "Afyon",
+                    "Ağrı",
+                    "Amasya",
+                    "Ankara",
+                    "Antalya",
+                    "Artvin",
+                    "Aydın",
+                    "Balıkesir",
+                    "Bilecik",
+                    "Bingöl",
+                    "Bitlis",
+                    "Bolu",
+                    "Burdur",
+                    "Bursa",
+                    "Çanakkale",
+                    "Çankırı",
+                    "Çorum",
+                    "Denizli",
+                    "Diyarbakır",
+                    "Edirne",
+                    "Elazığ",
+                    "Erzincan",
+                    "Erzurum",
+                    "Eskişehir",
+                    "Gaziantep",
+                    "Giresun",
+                    "Gümüşhane",
+                    "Hakkari",
+                    "Hatay",
+                    "Isparta",
+                    "Mersin",
+                    "İstanbul",
+                    "İzmir",
+                    "Kars",
+                    "Kastamonu",
+                    "Kayseri",
+                    "Kırklareli",
+                    "Kırşehir",
+                    "Kocaeli",
+                    "Konya",
+                    "Kütahya",
+                    "Malatya",
+                    "Manisa",
+                    "Kahramanmaraş",
+                    "Mardin",
+                    "Muğla",
+                    "Muş",
+                    "Nevşehir",
+                    "Niğde",
+                    "Ordu",
+                    "Rize",
+                    "Sakarya",
+                    "Samsun",
+                    "Siirt",
+                    "Sinop",
+                    "Sivas",
+                    "Tekirdağ",
+                    "Tokat",
+                    "Trabzon",
+                    "Tunceli",
+                    "Şanlıurfa",
+                    "Uşak",
+                    "Van",
+                    "Yozgat",
+                    "Zonguldak",
+                    "Aksaray",
+                    "Bayburt",
+                    "Karaman",
+                    "Kırıkkale",
+                    "Batman",
+                    "Şırnak",
+                    "Bartın",
+                    "Ardahan",
+                    "Iğdır",
+                    "Yalova",
+                    "Karabük",
+                    "Kilis",
+                    "Osmaniye",
+                    "Düzce",
+                ],
+            },
+            resultItem: {
+                highlight: true,
+            },
+            submit: true,
+            diacritics: true,
+            resultsList: {
+                tabSelect: true,
+            },
 
+        });
 
-<script>
-    const autoCompleteJS = new autoComplete({
-        placeHolder: "Şehir yazmaya başlayın...",
-        searchEngine: "loose",
-        data: {
-            src: [
-                "Adana",
-                "Adıyaman",
-                "Afyon",
-                "Ağrı",
-                "Amasya",
-                "Ankara",
-                "Antalya",
-                "Artvin",
-                "Aydın",
-                "Balıkesir",
-                "Bilecik",
-                "Bingöl",
-                "Bitlis",
-                "Bolu",
-                "Burdur",
-                "Bursa",
-                "Çanakkale",
-                "Çankırı",
-                "Çorum",
-                "Denizli",
-                "Diyarbakır",
-                "Edirne",
-                "Elazığ",
-                "Erzincan",
-                "Erzurum",
-                "Eskişehir",
-                "Gaziantep",
-                "Giresun",
-                "Gümüşhane",
-                "Hakkari",
-                "Hatay",
-                "Isparta",
-                "Mersin",
-                "İstanbul",
-                "İzmir",
-                "Kars",
-                "Kastamonu",
-                "Kayseri",
-                "Kırklareli",
-                "Kırşehir",
-                "Kocaeli",
-                "Konya",
-                "Kütahya",
-                "Malatya",
-                "Manisa",
-                "Kahramanmaraş",
-                "Mardin",
-                "Muğla",
-                "Muş",
-                "Nevşehir",
-                "Niğde",
-                "Ordu",
-                "Rize",
-                "Sakarya",
-                "Samsun",
-                "Siirt",
-                "Sinop",
-                "Sivas",
-                "Tekirdağ",
-                "Tokat",
-                "Trabzon",
-                "Tunceli",
-                "Şanlıurfa",
-                "Uşak",
-                "Van",
-                "Yozgat",
-                "Zonguldak",
-                "Aksaray",
-                "Bayburt",
-                "Karaman",
-                "Kırıkkale",
-                "Batman",
-                "Şırnak",
-                "Bartın",
-                "Ardahan",
-                "Iğdır",
-                "Yalova",
-                "Karabük",
-                "Kilis",
-                "Osmaniye",
-                "Düzce",
-            ],
-        },
-        resultItem: {
-            highlight: true,
-        },
-        submit: true,
-        diacritics: true,
-        resultsList: {
-            tabSelect: true,
-        },
-
-    });
-
-    document.querySelector("#autoComplete").addEventListener("selection", async function (event) {
-            const cityName = event.detail.selection.value;
-            const plaka = await getCityIdByName(cityName);
-            await guess(plaka);
-            document.querySelector("#autoComplete").value = null;
-            if (![...document.getElementById("typed-options").options].some((o) => o.value === cityName)) {
-                document.getElementById("typed-options").add(
-                    new Option(cityName)
-                );
+        document.querySelector("#autoComplete").addEventListener("selection", async function (event) {
+                const cityName = event.detail.selection.value;
+                const plaka = await getCityIdByName(cityName);
+                await guess(plaka);
+                document.querySelector("#autoComplete").value = null;
+                if (![...document.getElementById("typed-options").options].some((o) => o.value === cityName)) {
+                    document.getElementById("typed-options").add(
+                        new Option(cityName)
+                    );
+                }
             }
-        }
-    );
+        );
 
-</script>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
 
-<br/>
-<br/>
-<br/>
+    <br/>
+    <br/>
+    <br/>
 
 </div>
 </body>

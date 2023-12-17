@@ -44,8 +44,9 @@ const initGame = () => {
                 document.getElementById("typed-options").add(
                     new Option(c[e.destination - 1].name)
                 );
+                document.getElementById("daily-game-title").innerText = "Gezenti #" + (parseInt(e.game_id) + 1);
+                document.getElementById("daily-game-route").innerText = "Rota: " + c[e.origin - 1].name + " -> " + c[e.destination - 1].name;
             })
-
         }
     );
 }

@@ -8,7 +8,8 @@
 }
 
 .svg-turkiye-haritasi svg {
-    width: 100%;
+    padding-top: 8px;
+    width: 96%;
     height: auto;
 }
 
