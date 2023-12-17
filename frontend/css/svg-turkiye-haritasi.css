@@ -4,6 +4,7 @@
     max-width: 1140px;
     margin: 0 auto;
     text-align: center;
+    border: 1px solid;
 }
 
 .svg-turkiye-haritasi svg {

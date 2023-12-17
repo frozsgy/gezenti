@@ -33,11 +33,8 @@ const showCity = (id) => {
 
 const initGame = () => {
     gameDetails.then((e) => {
-            for (let i = 1; i < 82; i++) {
-                if (i !== e.origin && i !== e.destination) {
-                    changeVisibilityOfCity(i);
-                }
-            }
+            showCity(e.origin);
+            showCity(e.destination);
             guesses.push(e.origin);
             guesses.push(e.destination);
         }
