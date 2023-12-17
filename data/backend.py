@@ -7,16 +7,10 @@ import json
 from game import Game
 
 app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 game = Game()
 start_date = date(2023, 12, 1)
 
-
-# @app.route('/')
-# def index():
-#     return render_template('main.html', title=title, header=header, page=page)
 
 def get_game_id(game_date: date = date.today()) -> int:
     difference = (game_date - start_date).days
@@ -27,7 +21,6 @@ def get_game_id(game_date: date = date.today()) -> int:
 
 
 @app.route('/game')
-@cross_origin()
 def get_game():
     game_date = datetime.today().date()
     query_date = request.args.get('date', '')
@@ -42,15 +35,25 @@ def get_game():
 
 
 @app.route('/cities')
-@cross_origin()
 def get_cities():
     return game.cities
 
 
-#
-# @app.route("/static/<path:path>")
-# def send_static(path):
-#     return send_from_directory("static", path)
+@app.route('/')
+def index():
+    return send_file("static/index.html")
+
+
+@app.route("/css/<path:path>")
+def send_css(path):
+    return send_from_directory("static/css", path)
+
+
+@app.route("/js/<path:path>")
+def send_js(path):
+    return send_from_directory("static/js", path)
+
+
 #
 #
 # @app.route("/google918863081480b8fc.html")

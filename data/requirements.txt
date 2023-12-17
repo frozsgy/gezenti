@@ -1,2 +1,3 @@
-Flask
+flask
 flask-talisman
+flask_cors
