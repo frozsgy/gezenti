@@ -1,4 +1,5 @@
 from flask import Flask, send_from_directory, send_file, render_template, request
+from flask_cors import CORS, cross_origin
 from flask_talisman import Talisman
 from datetime import datetime, date
 import logging
@@ -6,6 +7,8 @@ import json
 from game import Game
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 game = Game()
 start_date = date(2023, 12, 1)
@@ -24,6 +27,7 @@ def get_game_id(game_date: date = date.today()) -> int:
 
 
 @app.route('/game')
+@cross_origin()
 def get_game():
     game_date = datetime.today().date()
     query_date = request.args.get('date', '')
@@ -33,11 +37,12 @@ def get_game():
             game_date = parsed_date
     except ValueError:
         logging.error(f"Invalid date while fetching game: {query_date}")
-
-    return game.get_game(get_game_id(game_date))
+    game_id = get_game_id(game_date)
+    return game.get_game(game_id) | {"game_id": game_id}
 
 
 @app.route('/cities')
+@cross_origin()
 def get_cities():
     return game.cities
 
