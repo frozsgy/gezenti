@@ -1,10 +1,12 @@
+const apiUrl = "http://127.0.0.1:5000"
+
 const loadGame = async () => {
-    const response = await fetch('http://127.0.0.1:5000/game');
+    const response = await fetch(apiUrl + '/game');
     return await response.json();
 }
 
 const loadCities = async () => {
-    const response = await fetch('http://127.0.0.1:5000/cities');
+    const response = await fetch(apiUrl + '/cities');
     return await response.json();
 }
 
@@ -12,7 +14,6 @@ const cities = loadCities();
 const gameDetails = loadGame();
 const guesses = [];
 let guessCount = 0;
-
 
 const changeVisibilityOfCity = (id) => {
     const style = document.getElementById(id).style.display;
@@ -29,7 +30,6 @@ const showCity = (id) => {
         document.getElementById(id).style.display = "block";
     }
 }
-
 
 const initGame = () => {
     gameDetails.then((e) => {
@@ -88,6 +88,7 @@ const finishGame = (didWin, isOptimal) => {
             alert('kaybettin');
         }, 250);
     }
+
     if (!isOptimal) {
         setTimeout(async () => {
             alert('optimal rota: ' + await getOptimalPathAsString());
@@ -102,6 +103,7 @@ const finishGame = (didWin, isOptimal) => {
             }
         }
     )
+
     guesses.forEach((e) => {
             const paths = document.getElementById(e).getElementsByTagName('path');
             [].forEach.call(paths, function (p) {
