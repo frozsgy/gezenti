@@ -44,14 +44,22 @@ class Game:
             map(self.get_city_name_by_id, map(lambda x: x - 1, self.games[game_number]["shortest_path"])))
 
     def does_path_exist(self, origin: int, destination: int, path: list) -> bool:
-        inbetween_nodes = set(path) - {origin, destination}
-        if len(inbetween_nodes) == 0:
-            return destination in self.cities[origin - 1]["neighbours"]
-        else:
-            # TODO -- optimize this by avoiding visiting nodes that are already visited
-            candidates = set(inbetween_nodes).intersection(self.cities[origin - 1]["neighbours"])
-            responses = map(lambda node: self.does_path_exist(node, destination, list(set(inbetween_nodes) - {node})), candidates)
-            return True in responses
+        allowed_nodes = set(path)
+        visited_nodes = set()
+
+        return self.dfs(origin, destination, allowed_nodes, visited_nodes)
+
+    def dfs(self, node: int, destination: int, allowed_nodes: set, visited_nodes: set) -> bool:
+        visited_nodes.add(node)
+
+        if node == destination:
+            return True
+
+        for neighbour in self.cities[node - 1]["neighbours"]:
+            if neighbour not in visited_nodes and neighbour in allowed_nodes:
+                if self.dfs(neighbour, destination, allowed_nodes, visited_nodes):
+                    return True
+        return False
 
     def play(self):
         game_number = int(input(f'Oyun numarası giriniz: '))
