@@ -64,7 +64,7 @@ const guess = (e) => {
                 guessCount++;
                 document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (" + (guessCount + 2) + "/" + (parseInt(gameDetail.distance) + 3 + 2) + ")";
                 showCity(e);
-                const result = await doesPathExist(gameDetail.origin, gameDetail.destination, guesses);
+                const result = await doesPathExist(c, gameDetail.origin, gameDetail.destination, guesses);
                 if (result) {
                     finishGame(true, guessCount === gameDetail.distance);
                 } else {
@@ -115,21 +115,29 @@ const finishGame = (didWin, isOptimal) => {
 }
 
 
-const doesPathExist = (origin, destination, path) => {
-    return cities.then(async (c) => {
-            const inbetweenNodes = new Set(path.filter(node => node !== origin && node !== destination));
-            if (inbetweenNodes.size === 0) {
-                return c[origin - 1]["neighbours"].includes(destination);
-            } else {
-                const candidates = new Set([...inbetweenNodes].filter(node => c[origin - 1]["neighbours"].includes(node)));
-                const responses = await Promise.all(Array.from(candidates).map(node =>
-                    doesPathExist(node, destination, [...new Set([...inbetweenNodes].filter(item => item !== node))])
-                ));
-                return responses.includes(true);
+const doesPathExist = (graph, origin, destination, allowedNodes) => {
+    const visited = new Set();
+
+    const dfs = (node) => {
+        visited.add(node);
+
+        if (node === destination) {
+            return true;
+        }
+
+        for (const neighbor of graph[node - 1].neighbours) {
+            if (!visited.has(neighbor) && allowedNodes.includes(neighbor)) {
+                if (dfs(neighbor)) {
+                    return true;
+                }
             }
         }
-    );
-}
+
+        return false;
+    };
+
+    return dfs(origin);
+};
 
 const getCityIdByName = (name) => {
     return cities.then((c) => {
