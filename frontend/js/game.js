@@ -12,22 +12,53 @@ const loadCities = async () => {
 
 const cities = loadCities();
 const gameDetails = loadGame();
-const guesses = [];
+let guesses = [];
 let guessCount = 0;
-
-const changeVisibilityOfCity = (id) => {
-    const style = document.getElementById(id).style.display;
-    if (style === "none") {
-        document.getElementById(id).style.display = "block";
-    } else {
-        document.getElementById(id).style.display = "none";
-    }
-}
 
 const showCity = (id) => {
     const style = document.getElementById(id).style.display;
     if (style === "none") {
         document.getElementById(id).style.display = "block";
+    }
+}
+
+const getCurrentDateAsString = () => {
+    const date = new Date();
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+}
+
+const initPage = () => {
+    initGame();
+    const gezentiData = localStorage.getItem("gezenti");
+    if (gezentiData !== null) {
+        const gezentiDataAsObject = JSON.parse(gezentiData)
+        if (gezentiDataAsObject["last_played_game"] === getCurrentDateAsString()) {
+            guesses = gezentiDataAsObject["guesses"];
+            guessCount = gezentiDataAsObject["guess_count"];
+
+            gameDetails.then((gameDetail) => {
+                    cities.then(() => {
+                            document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (" + (guessCount + 2) + "/" + (parseInt(gameDetail.distance) + 2) + ")";
+                            for (let i = 1; i < 82; i++) {
+                                if (i !== gameDetail.origin && i !== gameDetail.destination) {
+                                    showCity(i);
+                                }
+                            }
+                        }
+                    )
+                }
+            )
+
+            guesses.forEach((e) => {
+                    const paths = document.getElementById(e).getElementsByTagName('path');
+                    [].forEach.call(paths, function (p) {
+                            p.style.fill = "#1094F6";
+                        }
+                    );
+                }
+            )
+
+        }
     }
 }
 
@@ -79,6 +110,14 @@ const guess = (e) => {
 }
 
 const finishGame = (didWin, isOptimal) => {
+    const gezentiData = {
+        'last_played_game': getCurrentDateAsString(),
+        'did_win': didWin,
+        'guesses': guesses,
+        'guess_count': guessCount,
+    };
+    localStorage.setItem("gezenti", JSON.stringify(gezentiData));
+
     if (didWin) {
         setTimeout(() => {
             alert('kazandin');
@@ -103,7 +142,7 @@ const finishGame = (didWin, isOptimal) => {
             }
         }
 
-    // TODO -- do not let user continue playing after this point
+        // TODO -- do not let user continue playing after this point
     )
 
     guesses.forEach((e) => {
