@@ -46,7 +46,7 @@ const initGame = () => {
                 );
                 document.getElementById("daily-game-title").innerText = "Gezenti #" + (parseInt(e.game_id) + 1);
                 document.getElementById("daily-game-route").innerText = "Rota: " + c[e.origin - 1].name + " → " + c[e.destination - 1].name;
-                document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (2/" + (parseInt(e.distance) + 3 + 2) + ")";
+                document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (2/" + (parseInt(e.distance) + 2) + ")";
             })
         }
     );
@@ -62,7 +62,7 @@ const guess = (e) => {
                 }
                 guesses.push(e);
                 guessCount++;
-                document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (" + (guessCount + 2) + "/" + (parseInt(gameDetail.distance) + 3 + 2) + ")";
+                document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (" + (guessCount + 2) + "/" + (parseInt(gameDetail.distance) + 2) + ")";
                 showCity(e);
                 const result = await doesPathExist(c, gameDetail.origin, gameDetail.destination, guesses);
                 if (result) {
