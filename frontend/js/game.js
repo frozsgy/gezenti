@@ -35,6 +35,7 @@ const initPage = () => {
         if (gezentiDataAsObject["last_played_game"] === getCurrentDateAsString()) {
             guesses = gezentiDataAsObject["guesses"];
             guessCount = gezentiDataAsObject["guess_count"];
+            document.getElementById("autoComplete").disabled = true;
 
             gameDetails.then((gameDetail) => {
                     cities.then(() => {
@@ -134,6 +135,8 @@ const finishGame = (didWin, isOptimal) => {
         }, 250);
     }
 
+    document.getElementById("autoComplete").disabled = true;
+
     gameDetails.then((e) => {
             for (let i = 1; i < 82; i++) {
                 if (i !== e.origin && i !== e.destination) {
@@ -141,8 +144,6 @@ const finishGame = (didWin, isOptimal) => {
                 }
             }
         }
-
-        // TODO -- do not let user continue playing after this point
     )
 
     guesses.forEach((e) => {
