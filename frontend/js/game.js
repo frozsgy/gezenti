@@ -38,27 +38,33 @@ const initPage = () => {
             document.getElementById("autoComplete").disabled = true;
 
             gameDetails.then((gameDetail) => {
-                    cities.then(() => {
+                    cities.then((c) => {
                             document.getElementById("guess-selectbox-info-bar").innerText = "Açılan Şehirler (" + (guessCount + 2) + "/" + (parseInt(gameDetail.distance) + 2) + ")";
                             for (let i = 1; i < 82; i++) {
                                 if (i !== gameDetail.origin && i !== gameDetail.destination) {
                                     showCity(i);
                                 }
                             }
+
+                            guesses.forEach((e) => {
+                                    const paths = document.getElementById(e).getElementsByTagName('path');
+                                    [].forEach.call(paths, function (p) {
+                                            p.style.fill = "#1094F6";
+                                        }
+                                    );
+                                    if (e !== gameDetail.origin && e !== gameDetail.destination) {
+                                        document.getElementById("typed-options").add(
+                                            new Option(getCityNameById(c, e))
+                                        );
+                                    }
+
+                                }
+                            )
+
                         }
                     )
                 }
             )
-
-            guesses.forEach((e) => {
-                    const paths = document.getElementById(e).getElementsByTagName('path');
-                    [].forEach.call(paths, function (p) {
-                            p.style.fill = "#1094F6";
-                        }
-                    );
-                }
-            )
-
         }
     }
 }
