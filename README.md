@@ -4,6 +4,8 @@ Gezenti is a daily travel game based on the cities of Turkey.
 
 ![image](https://github.com/frozsgy/gezenti/assets/8549267/6cc5e7c6-310b-4c00-a896-f712341ef02d)
 
+## History
+
 The inspiration for this game comes from another game called Travle, which I personally enjoyed a lot over the last
 year.
 
@@ -19,6 +21,18 @@ While developing this, I wanted to avoid using massive JS frameworks so I can wo
 to admit, it was a bit challenging, but I enjoyed the whole process from start to finish.
 
 I hope you'll enjoy this game as much as I did while developing it.
+
+## Tech Stack
+
+- Backend: 
+  - Python with Flask
+- Frontend:
+  - Javascript
+    - Turkey map was developed using https://github.com/dnomak/svg-turkiye-haritasi
+    - Autocomplete feature is provided by https://github.com/TarekRaafat/autoComplete.js
+    - Modal view was developed using https://github.com/robinparisi/tingle
+
+## Contributing
 
 Got any suggestions or improvements? Pull requests are always welcome.
 
