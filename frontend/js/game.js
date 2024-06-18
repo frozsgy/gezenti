@@ -53,7 +53,7 @@ const initPage = () => {
                                         }
                                     );
                                     if (e !== gameDetail.origin && e !== gameDetail.destination) {
-                                        document.getElementById("typed-options").add(
+                                        document.getElementById("typed-options").appendChild(
                                             new Option(getCityNameById(c, e))
                                         );
                                     }
@@ -76,10 +76,10 @@ const initGame = () => {
             guesses.push(e.origin);
             guesses.push(e.destination);
             cities.then((c) => {
-                document.getElementById("typed-options").add(
+                document.getElementById("typed-options").appendChild(
                     new Option(c[e.origin - 1].name)
                 );
-                document.getElementById("typed-options").add(
+                document.getElementById("typed-options").appendChild(
                     new Option(c[e.destination - 1].name)
                 );
                 document.getElementById("daily-game-title").innerText = "Gezenti #" + (parseInt(e.game_id) + 1);
