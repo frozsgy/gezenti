@@ -1,6 +1,6 @@
 # Gezenti
 
-Gezenti is a daily travel game based on the cities of Turkey. 
+Gezenti is a daily travel game based on the cities of Turkey.
 
 ![image](https://github.com/frozsgy/gezenti/assets/8549267/6cc5e7c6-310b-4c00-a896-f712341ef02d)
 
@@ -22,15 +22,24 @@ to admit, it was a bit challenging, but I enjoyed the whole process from start t
 
 I hope you'll enjoy this game as much as I did while developing it.
 
+## Deployment
+
+You can deploy this to Heroku directly by using the `build.sh` file to bundle the necessary files under a folder, and
+then push everything. It works without any need for configuration.
+
+If you want to deploy this on your own, you'd need the contents of the `frontend` folder, and also the `backend.py` file
+and its dependencies (please refer to the `build.sh` file for further information). Most of the files under
+the `backend` folder were used during the data preprocessing and saving them to the necessary JSON files.
+
 ## Tech Stack
 
-- Backend: 
-  - Python with Flask
+- Backend:
+    - Python with Flask
 - Frontend:
-  - Javascript
-    - Turkey map was developed using https://github.com/dnomak/svg-turkiye-haritasi
-    - Autocomplete feature is provided by https://github.com/TarekRaafat/autoComplete.js
-    - Modal view was developed using https://github.com/robinparisi/tingle
+    - Javascript
+        - Turkey map was developed using https://github.com/dnomak/svg-turkiye-haritasi
+        - Autocomplete feature is provided by https://github.com/TarekRaafat/autoComplete.js
+        - Modal view was developed using https://github.com/robinparisi/tingle
 
 ## Contributing
 
