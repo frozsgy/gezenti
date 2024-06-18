@@ -2,7 +2,7 @@
 
 Gezenti is a daily travel game based on the cities of Turkey.
 
-![image](https://github.com/frozsgy/gezenti/assets/8549267/6cc5e7c6-310b-4c00-a896-f712341ef02d)
+<img width="954" alt="Screenshot 2024-06-18 at 22 58 08" src="https://github.com/frozsgy/gezenti/assets/8549267/8c1298fc-b70b-4a24-a4fd-806d81b55543">
 
 ## History
 
