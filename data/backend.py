@@ -9,7 +9,7 @@ from game import Game
 app = Flask(__name__)
 
 game = Game()
-start_date = date(2023, 12, 1)
+start_date = date(2024, 6, 18)
 
 
 def get_game_id(game_date: date = date.today()) -> int:
