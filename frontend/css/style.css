@@ -231,3 +231,7 @@ label, legend, fieldset {
     padding-left: 4px;
     margin-bottom: 2rem;
 }
+
+.tingle-container {
+    display: none;
+}

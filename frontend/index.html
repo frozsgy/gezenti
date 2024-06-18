@@ -9,10 +9,10 @@
     <link href="./css/svg-turkiye-haritasi.css" rel="stylesheet"/>
     <link href="./css/autocomplete.css" rel="stylesheet">
     <link href="./css/tingle.min.css" rel="stylesheet">
+    <script src="./js/tingle.min.js"></script>
     <script src="./js/game.js"></script>
     <script src="./js/svg-turkiye-haritasi.js"></script>
     <script src="./js/autoComplete.min.js"></script>
-    <script src="./js/tingle.min.js"></script>
 </head>
 <body onLoad="initPage()">
 
@@ -413,5 +413,16 @@
 <div class="footer">
     kopirayt | nasil oynanir | hakkinda etc
 </div>
+
+<div class="tingle-container" id="warning-modal">
+    <h1 id="modal-title">Uyarı</h1>
+    <span id="modal-content">Hata!
+    </span>
+</div>
+
+<script>
+    const gameModal = new tingle.modal();
+</script>
+
 </body>
 </html>

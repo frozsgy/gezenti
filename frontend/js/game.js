@@ -95,7 +95,7 @@ const guess = (e) => {
     return gameDetails.then((gameDetail) => {
             return cities.then(async (c) => {
                 if (guesses.includes(e)) {
-                    alert("tekrarli tahmin, baska sehir sec");
+                    displayModal("Hata", "Seçtiğiniz şehri daha önce tahmin ettiniz, yeni şehir seçin");
                     return false;
                 }
                 guesses.push(e);
@@ -116,7 +116,7 @@ const guess = (e) => {
     )
 }
 
-const finishGame = (didWin, isOptimal) => {
+const finishGame = async (didWin, isOptimal) => {
     const gezentiData = {
         'last_played_game': getCurrentDateAsString(),
         'did_win': didWin,
@@ -124,21 +124,18 @@ const finishGame = (didWin, isOptimal) => {
         'guess_count': guessCount,
     };
     localStorage.setItem("gezenti", JSON.stringify(gezentiData));
+    const optimalRoute = await getOptimalPathAsString();
 
     if (didWin) {
-        setTimeout(() => {
-            alert('kazandin');
-        }, 250);
+        let winContent = "";
+        if (!isOptimal) {
+            winContent = "Ancak seçtiğiniz rotadan daha kısa bir çözüm mevcut: " + optimalRoute;
+        } else {
+            winContent = "Seçtiğiniz rota en optimal çözümlerden biri!"
+        }
+        displayModal("Kazandınız!", winContent);
     } else {
-        setTimeout(() => {
-            alert('kaybettin');
-        }, 250);
-    }
-
-    if (!isOptimal) {
-        setTimeout(async () => {
-            alert('optimal rota: ' + await getOptimalPathAsString());
-        }, 250);
+        displayModal("Kaybettiniz!", "İdeal çözüm: " + optimalRoute);
     }
 
     document.getElementById("autoComplete").disabled = true;
@@ -192,7 +189,7 @@ const getCityIdByName = (name) => {
             const candidate = c.filter(x => x.name.toLowerCase() === name.toLowerCase());
 
             if (candidate.length === 0) {
-                alert("Girilen isimde bir şehir mevcut değil");
+                displayModal("Hata", "Girilen isimde bir şehir mevcut değil");
                 return -1;
             }
 
@@ -213,4 +210,11 @@ const getOptimalPathAsString = () => {
                 .join(" → ");
         });
     });
+}
+
+const displayModal = (title, content) => {
+    document.getElementById("modal-title").innerHTML = title;
+    document.getElementById("modal-content").innerHTML = content;
+    gameModal.setContent(document.getElementById("warning-modal").innerHTML);
+    gameModal.open();
 }
