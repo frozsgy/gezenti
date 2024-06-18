@@ -1,10 +1,12 @@
 .left {
     float: left;
+    width: 45%;
 }
 
 .right {
     float: right;
     margin-left: auto;
+    text-align: right;
 }
 
 .header {
@@ -25,6 +27,7 @@
         /*padding-left: 300px;*/
     }
 }
+
 @media (max-width: 480px) {
     .content {
         position: relative;
@@ -65,28 +68,57 @@ h1, h2, h3, h4, h5, h6 {
     hyphens: auto;
 }
 
-h1 {
-    font-size: 2.35em;
+
+@media (min-width: 480px) {
+    h1 {
+        font-size: 2.35em;
+    }
+
+    h2 {
+        font-size: 2.00em;
+    }
+
+    h3 {
+        font-size: 1.75em;
+    }
+
+    h4 {
+        font-size: 1.5em;
+    }
+
+    h5 {
+        font-size: 1.25em;
+    }
+
+    h6 {
+        font-size: 1em;
+    }
 }
 
-h2 {
-    font-size: 2.00em;
-}
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.75em;
+    }
 
-h3 {
-    font-size: 1.75em;
-}
+    h2 {
+        font-size: 1.5em;
+    }
 
-h4 {
-    font-size: 1.5em;
-}
+    h3 {
+        font-size: 1.25em;
+    }
 
-h5 {
-    font-size: 1.25em;
-}
+    h4 {
+        font-size: 1.00em;
+    }
 
-h6 {
-    font-size: 1em;
+    h5 {
+        font-size: 0.75em;
+    }
+
+    h6 {
+        font-size: 0.5em;
+    }
 }
 
 p {
