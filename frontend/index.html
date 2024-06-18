@@ -411,13 +411,45 @@
 </div>
 <hr/>
 <div class="footer">
-    kopirayt | nasil oynanir | hakkinda etc
+    <a href="#" onclick="displayModalByContentId('how-to-play-modal')">Nasıl Oynanır</a> |
+    <a href="#" onclick="displayModalByContentId('about-modal')">Hakkında</a>
 </div>
 
 <div class="tingle-container" id="warning-modal">
     <h1 id="modal-title">Uyarı</h1>
     <span id="modal-content">Hata!
     </span>
+</div>
+
+<div class="tingle-container" id="how-to-play-modal">
+    <h1>Nasıl Oynanır</h1>
+    <p>Gezenti, illerin birbirleriyle olan komşuluklarına göre oynanan bir seyahat oyunudur.</p>
+    <p>Oyunu oynarken, verilen başlangıç noktasından hedef noktasına, mümkün olan en az sayıda ilden geçerek ulaşmaya
+        çalışmalısınız.</p>
+    <p>En kısa yol için gereken il sayısını "Açılan Şehirler" bölümünün en sağında görebilirsiniz. Yaptığınız tahmin
+        sayısı da aynı alanda yer almaktadır.</p>
+    <p>Her oyunda en kısa rotadan 3 fazla sayıda tahmin hakkınız bulunmakta. Tahmin haklarınız bittiğinde hala hedefe
+        ulaşamadıysanız, oyunu kaybetmiş sayılırsınız.</p>
+    <p>Yeni oyun her gün geceyarısı yayınlanır.</p>
+</div>
+
+<div class="tingle-container" id="about-modal">
+    <h1>Hakkında</h1>
+    <p>Gezenti, günlük olarak yenilenen, iller arası bir seyahat oyunu.</p>
+    <p>2013 yılının Aralık ayında bir haftasonu yapımına başladığım bu oyunu, 6 aylık bir aradan sonra 2024 Haziran
+        ayında bitirip yayınlayabildim.</p>
+    <p>Oyunun fikir kaynağı, yazmaya başladığım dönemde henüz Türkiye versiyonu olmayan, oynamaktan büyük keyif aldığım
+        Travle adlı oyunun ta kendisi, ancak geçtiğimiz aylarda Türkiye versiyonu da yayına alındığı için oyun şu
+        noktada biraz geç kalmış olarak da değerlendirilebilir.</p>
+    <p>Bu projeyi yazarken olabildiğince basit bir yaklaşım kullanmak istediğim için, React, Angular, Vue gibi herhangi
+        bir framework kullanmadan, tamamen vanilla JS kullanarak projenin frontend'ini yazmak istedim. Bir noktada bu
+        sebeple uğraştırıcı da oldu, ancak ben yaparken büyük keyif aldım. Umarım sizler de oynarken aynı şekilde keyif
+        alabilirsiniz.</p>
+    <p>Oyunun kaynak kodlarına <a href="https://github.com/frozsgy/gezenti" target="_blank">GitHub</a> üzerinden
+        erişebilirsiniz. Pull request açarak oyuna katkıda bulunabilirsiniz.</p>
+    <p>Benimle <a href="https://twitter.com/moa_42" target="_blank">Twitter hesabım</a> üzerinden iletişime
+        geçebilirsiniz. </p>
+    <p>İyi oyunlar!</p>
 </div>
 
 <script>

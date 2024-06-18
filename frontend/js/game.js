@@ -215,6 +215,10 @@ const getOptimalPathAsString = () => {
 const displayModal = (title, content) => {
     document.getElementById("modal-title").innerHTML = title;
     document.getElementById("modal-content").innerHTML = content;
-    gameModal.setContent(document.getElementById("warning-modal").innerHTML);
+    displayModalByContentId("warning-modal");
+}
+
+const displayModalByContentId = (id) => {
+    gameModal.setContent(document.getElementById(id).innerHTML);
     gameModal.open();
 }
