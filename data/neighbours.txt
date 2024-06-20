@@ -15,7 +15,7 @@ Bolu,Eskişehir,Ankara,Çankırı,Zonguldak,Düzce,Sakarya,Bilecik
 Burdur,Muğla,Antalya,Isparta,Afyon,Denizli
 Bursa,Balıkesir,Kütahya,Bilecik,Sakarya,Kocaeli,Yalova
 Çanakkale,Balıkesir,Tekirdağ,Edirne
-Çankırı,Ankara,Kırıkkale,Çorum,Kastamonu,Zonguldak,Bolu,Karabük
+Çankırı,Ankara,Kırıkkale,Çorum,Kastamonu,Bolu,Karabük
 Çorum,Yozgat,Amasya,Samsun,Sinop,Kastamonu,Çankırı,Kırıkkale
 Denizli,Muğla,Burdur,Afyon,Uşak,Manisa,Aydın
 Diyarbakır,Şanlıurfa,Mardin,Batman,Muş,Bingöl,Elazığ,Malatya,Adıyaman
@@ -64,7 +64,7 @@ Tunceli,Elazığ,Bingöl,Erzincan
 Uşak,Manisa,Denizli,Afyon,Kütahya
 Van,Hakkari,Şırnak,Siirt,Bitlis,Ağrı
 Yozgat,Kayseri,Sivas,Tokat,Amasya,Çorum,Kırıkkale,Kırşehir,Nevşehir
-Zonguldak,Bartın,Çankırı,Bolu,Düzce,Karabük
+Zonguldak,Bartın,Bolu,Düzce,Karabük
 Aksaray,Niğde,Nevşehir,Kırşehir,Ankara,Konya
 Bayburt,Erzincan,Erzurum,Rize,Trabzon,Gümüşhane
 Karaman,Mersin,Konya,Antalya
