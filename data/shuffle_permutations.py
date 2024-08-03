@@ -20,8 +20,11 @@ def read_from_json_while_preserving_original_order():
                 origin = entry['origin']
                 destination = entry['destination']
 
-                q = next(x for x in permutations if x['origin'] == origin and x['destination'] == destination)
-                response.append(q)
+                try:
+                    q = next(x for x in permutations if x['origin'] == origin and x['destination'] == destination)
+                    response.append(q)
+                except StopIteration:
+                    pass
 
         return response
 
